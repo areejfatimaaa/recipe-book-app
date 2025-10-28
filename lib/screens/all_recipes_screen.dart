@@ -47,8 +47,7 @@ class AllRecipesScreen extends StatelessWidget {
                         ),
                         title: Text(
                           recipe.name,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
                           "${recipe.category} • ${recipe.time}",
@@ -72,15 +71,18 @@ class AllRecipesScreen extends StatelessWidget {
                             ),
                             if (!recipe.isSystemRecipe)
                               IconButton(
-                                icon: const Icon(Icons.delete,
-                                    color: Colors.grey),
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.grey,
+                                ),
                                 onPressed: () {
                                   showDialog(
                                     context: context,
                                     builder: (ctx) => AlertDialog(
                                       title: const Text('Delete Recipe'),
                                       content: const Text(
-                                          'Are you sure you want to delete this recipe?'),
+                                        'Are you sure you want to delete this recipe?',
+                                      ),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -89,14 +91,12 @@ class AllRecipesScreen extends StatelessWidget {
                                         ),
                                         TextButton(
                                           onPressed: () {
-                                            recipeProvider
-                                                .deleteRecipe(index);
+                                            recipeProvider.deleteRecipe(index);
                                             Navigator.of(ctx).pop();
                                           },
                                           child: const Text(
                                             'Delete',
-                                            style: TextStyle(
-                                                color: Colors.red),
+                                            style: TextStyle(color: Colors.red),
                                           ),
                                         ),
                                       ],

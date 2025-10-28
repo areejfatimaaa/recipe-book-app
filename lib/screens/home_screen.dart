@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
 
             // Categories section
             const Text(
-              'Categories 🍽️',
+              'Categories',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

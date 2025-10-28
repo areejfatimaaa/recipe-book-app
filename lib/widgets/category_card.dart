@@ -52,7 +52,7 @@ class CategoryCard extends StatelessWidget {
     );
   }
 
-  // Optional: Give each category a unique pastel color
+  
   Color _getPastelColor(String category) {
     switch (category.toLowerCase()) {
       case 'breakfast':

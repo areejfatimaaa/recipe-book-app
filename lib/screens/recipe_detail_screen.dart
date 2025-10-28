@@ -50,7 +50,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // ✅ Modern Image with overlay text
+           
             Stack(
               children: [
                 // Image (asset or file)

@@ -38,6 +38,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         title: const Text('Add Recipe'),
         backgroundColor: Colors.green,
@@ -78,8 +79,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               ),
               TextFormField(
                 controller: _timeController,
-                decoration:
-                    const InputDecoration(labelText: 'Time (e.g. 30 mins)'),
+                decoration: const InputDecoration(
+                  labelText: 'Time (e.g. 30 mins)',
+                ),
               ),
               const SizedBox(height: 16),
 
@@ -93,8 +95,9 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                   Expanded(
                     child: TextField(
                       controller: _ingredientController,
-                      decoration:
-                          const InputDecoration(hintText: 'Enter ingredient'),
+                      decoration: const InputDecoration(
+                        hintText: 'Enter ingredient',
+                      ),
                     ),
                   ),
                   IconButton(
@@ -113,14 +116,16 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
               ),
               Wrap(
                 children: _ingredients
-                    .map((i) => Chip(
-                          label: Text(i),
-                          onDeleted: () {
-                            setState(() {
-                              _ingredients.remove(i);
-                            });
-                          },
-                        ))
+                    .map(
+                      (i) => Chip(
+                        label: Text(i),
+                        onDeleted: () {
+                          setState(() {
+                            _ingredients.remove(i);
+                          });
+                        },
+                      ),
+                    )
                     .toList(),
               ),
               const SizedBox(height: 16),
@@ -156,14 +161,16 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                 children: _steps
                     .asMap()
                     .entries
-                    .map((e) => Chip(
-                          label: Text('${e.key + 1}. ${e.value}'),
-                          onDeleted: () {
-                            setState(() {
-                              _steps.removeAt(e.key);
-                            });
-                          },
-                        ))
+                    .map(
+                      (e) => Chip(
+                        label: Text('${e.key + 1}. ${e.value}'),
+                        onDeleted: () {
+                          setState(() {
+                            _steps.removeAt(e.key);
+                          });
+                        },
+                      ),
+                    )
                     .toList(),
               ),
               const SizedBox(height: 20),
@@ -185,8 +192,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                     );
 
                     try {
-                      Provider.of<RecipeProvider>(context, listen: false)
-                          .addRecipe(newRecipe);
+                      Provider.of<RecipeProvider>(
+                        context,
+                        listen: false,
+                      ).addRecipe(newRecipe);
 
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -195,8 +204,10 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
                         ),
                       );
 
-                      Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
- // Go back safely
+                      Navigator.of(
+                        context,
+                      ).pushNamedAndRemoveUntil('/home', (route) => false);
+                      // Go back safely
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

@@ -16,6 +16,7 @@ class MyRecipesScreen extends StatelessWidget {
             recipeProvider.recipes.where((r) => !r.isSystemRecipe).toList();
 
         return Scaffold(
+           backgroundColor: Colors.grey[50],
           appBar: AppBar(
             title: const Text('My Recipes'),
             backgroundColor: Colors.green,

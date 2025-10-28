@@ -15,9 +15,12 @@ class CategoryRecipeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Filter recipes for this category
-    final filteredRecipes = recipes.where((r) => r.category == category).toList();
+    final filteredRecipes = recipes
+        .where((r) => r.category == category)
+        .toList();
 
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       appBar: AppBar(
         title: Text('$category Recipes'),
         backgroundColor: Colors.green,
@@ -40,7 +43,8 @@ class CategoryRecipeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RecipeDetailScreen(recipe: recipe),
+                          builder: (context) =>
+                              RecipeDetailScreen(recipe: recipe),
                         ),
                       );
                     },
@@ -60,7 +64,7 @@ class CategoryRecipeScreen extends StatelessWidget {
                             ),
                             child: Image.asset(
                               recipe.imagePath,
-                              width: 120, // ✅ fixed smaller width
+                              width: 120,
                               height: 100,
                               fit: BoxFit.cover,
                             ),
@@ -69,7 +73,10 @@ class CategoryRecipeScreen extends StatelessWidget {
                           // Recipe info
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 8,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -83,12 +90,18 @@ class CategoryRecipeScreen extends StatelessWidget {
                                   const SizedBox(height: 4),
                                   Text(
                                     'Difficulty: ${recipe.difficulty}',
-                                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
                                     'Time: ${recipe.time}',
-                                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ],
                               ),

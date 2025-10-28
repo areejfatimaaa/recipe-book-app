@@ -33,15 +33,17 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false, // prevent auto pop
-      onPopInvoked: (didPop) async {
+      canPop: false, // prevent default back pop
+      onPopInvokedWithResult: (didPop, result) async {
         if (didPop) return;
 
+        // If user is not on the Home screen, go back to Home
         if (_selectedIndex != 0) {
           setState(() => _selectedIndex = 0);
           return;
         }
 
+        // If user is already on Home, ask for double back press to exit
         final now = DateTime.now();
         if (lastPressed == null ||
             now.difference(lastPressed!) > const Duration(seconds: 2)) {
